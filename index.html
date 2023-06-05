@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Copy to Clipboard</title>
+
+		<!-- BoxIcons v2.1.2 offline-->
+		<link rel="stylesheet" href="./icons/css/boxicons.css" />
+
+		<!-- CSS File -->
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<div class="box">
+			<input
+				type="text"
+				placeholder="Type something..."
+				id="input"
+				value=""
+			/>
+			<button class="bx bx-clipboard" id="copy"></button>
+		</div>
+
+		<!-- JavaScript File -->
+		<script>
+			var copyButton = document.getElementById("copy");
+
+			copyButton.addEventListener("click", () => {
+				var textInput = document.getElementById("input");
+				console.log(textInput.value);
+				navigator.clipboard.writeText(textInput.value);
+				copyButton.classList.remove("bx-clipboard");
+				copyButton.classList.add("bx-check");
+				setTimeout(function () {
+					copyButton.classList.remove("bx-check");
+					copyButton.classList.add("bx-clipboard");
+					textInput.value = "";
+				}, 2000);
+			});
+		</script>
+	</body>
+</html>
